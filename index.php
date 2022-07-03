@@ -1,11 +1,11 @@
 <?php
-    session_cache_expire(5);
+    session_cache_expire(5); // sessão dura 5 minutos
     session_start();
     if (!isset($_SESSION['login'])) $_SESSION['login'] = false;
     if (!$_SESSION['login']){
 ?>
     <!DOCTYPE html>
-    <html lang="pt_BR" class="no-js">
+    <html lang="pt_BR">
         <head>
             <meta charset="UTF-8">
             <meta name="author" content="Allan Carlos">

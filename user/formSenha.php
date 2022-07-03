@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt_BR" class="no-js">
+<html lang="pt_BR">
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Allan Carlos">

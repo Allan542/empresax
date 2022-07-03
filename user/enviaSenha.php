@@ -1,14 +1,19 @@
 <?php
     include "../conexao.php";
     $recebeEmail = $_POST['email'];
-        $filtraEmail = filter_var($recebeEmail, FILTER_SANITIZE_SPECIAL_CHARS);
-        $filtraEmail = filter_var($filtraEmail, FILTER_SANITIZE_ADD_SLASHES);
+    $filtraEmail = filter_var($recebeEmail, FILTER_SANITIZE_SPECIAL_CHARS);
+    $filtraEmail = filter_var($filtraEmail, FILTER_SANITIZE_ADD_SLASHES);
 
-        $sql_pesq = mysqli_query($conecta, "SELECT * FROM tblusuario WHERE email_tblusuario = '$filtraEmail'") or die (mysqli_error($conecta));
-        $verifica = mysqli_num_rows($sql_pesq);
+    $recebeResposta = $_POST['resposta'];
+    $filtraResposta = filter_var($recebeResposta, FILTER_SANITIZE_SPECIAL_CHARS);
+    $filtraResposta = filter_var($filtraResposta, FILTER_SANITIZE_ADD_SLASHES);
+    $filtraResposta = strtolower($filtraResposta);
+
+    $sql_pesq = mysqli_query($conecta, "SELECT * FROM tblusuario WHERE email_tblusuario = '$filtraEmail'") or die (mysqli_error($conecta));
+    $result = mysqli_fetch_assoc($sql_pesq);
 ?>
 <!DOCTYPE html>
-<html lang="pt_BR" class="no-js">
+<html lang="pt_BR">
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Allan Carlos">
@@ -19,16 +24,15 @@
 </head>
 <body>
     <div id="conteudo">
-        <?php if ($verifica == 0) {?>
-            <h1>Email inválido!</h1>
+        <?php if ($verifica == 0 || strtolower($result['resp_pergunta_secreta']) != $filtraResposta) { ?>
+            <h1>Per!</h1>
             <div class="borda"></div>
             <p>Desculpe, mas o e-mail solicitado não está cadastrado</p>
             <p>Entre em contato com o administrador do sistema.<br>
-            Se quiser tentar novamente, <a href="./">clique aqui</a>.</p>
+            Se quiser tentar novamente, <a href="formSenha.php">clique aqui</a>.</p>
             <p>Obrigado.</p>
         <?php } 
         else {
-            $result = mysqli_fetch_assoc($sql_pesq);
             $id_usuario = $result['id_tblusuario'];
             $nome = $result['nome_tblusuario'];
             $email = $result['email_tblusuario'];
