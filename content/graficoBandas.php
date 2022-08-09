@@ -5,7 +5,7 @@
         <meta name="author" content="Allan Carlos">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../assets/css/style.css">
         <script src="../js-library/RGraph.common.core.js"></script>
         <script src="../js-library/RGraph.common.tooltips.js"></script>
         <script src="../js-library/RGraph.common.dynamic.js"></script>
@@ -100,23 +100,14 @@
                     {maxWidth:900,width:984,height:400, options: {textSize:12,xaxisLabels: <?php echo $nomeBandas; ?>, marginInner: 5}, parentCss: {textAlign: 'center'}}
                 ])
             }
-
-            function mostra(url){
-                document.querySelector('#expandir').style.visibility="visible"
-                document.querySelector('#expandir-foto').style.visibility="visible"
-                document.querySelector('img#expandir-foto').src=`${url}` 
-            }
-            function oculta(){
-                document.querySelector('#expandir').style.visibility="hidden"
-                document.querySelector('#expandir-foto').style.visibility="hidden"
-            }
         </script>
+        <script src="../assets/js/manipulaFoto.js"></script>
     </head>
     <body>
-        <div id="expandir" onclick="oculta()">
-            <img id="expandir-foto" alt="Foto Ampliada">
-        </div>
         <div id="conteudo">
+            <div class="expandir" onclick="expandeFoto('')">
+                <img class="expandir-foto" alt="Foto Ampliada">
+            </div>
         <?php
             if(!isset($_SESSION['login'])) $_SESSION['login'] = false;
             if($_SESSION['login']){
@@ -152,10 +143,10 @@
                                 <div class="discos">
                                     <span class="titulo_disco"><?php echo $resultdiscos['titulo_tbl_discos']; ?></span>
                                     <img 
-                                        src="../<?php echo $resultdiscos['capa_tbl_discos']; ?>"
+                                        src="../assets/<?php echo $resultdiscos['capa_tbl_discos']; ?>"
                                         alt="Capa do álbum"
                                         title="<?php echo $resultdiscos['titulo_tbl_discos']; ?>"
-                                        onclick="mostra('../<?php echo $resultdiscos['capa_tbl_discos']; ?>')"
+                                        onclick="expandeFoto('../assets/<?php echo $resultdiscos['capa_tbl_discos']; ?>')"
                                     >
                                 </div>
                         <?php } ?>

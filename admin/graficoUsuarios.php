@@ -5,11 +5,11 @@
         <meta name="author" content="Allan Carlos">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css/style.css">
-        <script src="../js-library/RGraph.common.core.js"></script>
-        <script src="../js-library/RGraph.common.tooltips.js"></script>
-        <script src="../js-library/RGraph.common.dynamic.js"></script>
-        <script src="../js-library/RGraph.bar.js"></script>
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <script src="../assets/js-library/RGraph.common.core.js"></script>
+        <script src="../assets/js-library/RGraph.common.tooltips.js"></script>
+        <script src="../assets/js-library/RGraph.common.dynamic.js"></script>
+        <script src="../assets/js-library/RGraph.bar.js"></script>
         <title>Gráfico de Usuários Cadastrados</title>
 
         <?php

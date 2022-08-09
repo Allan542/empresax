@@ -17,9 +17,9 @@ Projeto desenvolvido para aprender um pouco sobre o funcionamento da linguagem P
  
  - [X] Conteúdo que pode ser acessado após estar logado. Ele conta com um texto para leitura e um ***gráfico*** com três bandas previamente cadastradas no banco de dados, mostrando quantos discos no total tem cada uma delas. Os dados cadastrados também servem para mostrar a foto do álbum de cada um dos discos separados por cada banda a quem esta pertence e, quando clicadas, a mesma foto é ampliada no meio da tela. Também, há uma opção para *imprimir* a página, porém sem o ***gráfico***.
 
-## Funcionalidades em Desenvolvimento 🔧
+ - [ ] Um sistema de "*esqueci a senha*" para autenticar se o usuário cadastrado existe e se ele acertou a pergunta secreta que ele mesmo colocou quando fez o cadastro no sistema. Caso atenda os dois requisitos, o sistema manda um e-mail para o usuário;
 
-- [ ] Um sistema de "*esqueci a senha*" para autenticar se o usuário cadastrado existe e se ele acertou a pergunta secreta que ele mesmo colocou quando fez o cadastro no sistema. Caso atenda os dois requisitos, o sistema manda um e-mail para o usuário;
+## Funcionalidades em Desenvolvimento 🔧
 
 - [ ] Um perfil que contará com as informações do usuário e mostrará as informações que o usuário cadastrou. Nessa mesma tela, o usuário terá como atualizar os seus dados cadastrais, exceto e-mail por razões de segurança;
 

@@ -19,17 +19,16 @@
     <meta name="author" content="Allan Carlos">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <title>Sistema de Login e Senha Criptografados</title>
 </head>
 <body>
     <div id="conteudo">
-        <?php if ($verifica == 0 || strtolower($result['resp_pergunta_secreta']) != $filtraResposta) { ?>
-            <h1>Per!</h1>
+        <?php if (strtolower($result['resp_pergunta_secreta']) != $filtraResposta) { ?>
+            <h1>Pergunta secreta!</h1>
             <div class="borda"></div>
-            <p>Desculpe, mas o e-mail solicitado não está cadastrado</p>
-            <p>Entre em contato com o administrador do sistema.<br>
-            Se quiser tentar novamente, <a href="formSenha.php">clique aqui</a>.</p>
+            <p>Desculpe, mas a pergunta secreta está incorreta!</p>
+            <p>Se quiser tentar novamente, <a href="formSenha.php">clique aqui</a>.</p>
             <p>Obrigado.</p>
         <?php } 
         else {

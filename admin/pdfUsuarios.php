@@ -1,5 +1,5 @@
 <?php
-    require_once __DIR__ . '/../composer/vendor/autoload.php';
+    require_once __DIR__ . '/../components/composer/vendor/autoload.php';
     include "../conexao.php";
 
     session_start();
@@ -13,8 +13,8 @@
     $html = $html . "<meta charset='UTF-8'>";
     $html = $html . "<meta http-equiv='X-UA-Compatible' content='IE=edge'>";
     $html = $html . "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
-    $html = $html . "<link rel='stylesheet' href='../css/style.css'>";
-    $html = $html . "<link rel='stylesheet' href='../css/style-pdf.css'>";
+    $html = $html . "<link rel='stylesheet' href='../assets/css/style.css'>";
+    $html = $html . "<link rel='stylesheet' href='../assets/css/style-pdf.css'>";
     $html = $html . "<title>Gerar Relatório de Usuários Cadastrados</title>";
     $html = $html . "</head>";
 

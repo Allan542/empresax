@@ -11,7 +11,7 @@
     <meta name="author" content="Allan Carlos">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <title>Conteúdo Exclusivo</title>
 </head>
 <body>
@@ -30,7 +30,12 @@
                     <a href="../admin/usuariosCadastrados.php">
                         <button class="botao">Acessar usuários conectados</button>
                     </a>
-                <?php } ?>
+                    <?php } ?>
+                <div class="clear"></div>
+                <div class="espaco"></div>
+                <a href="../user/formPerfil.php">
+                    <button class="botao">Acessar perfil</button>
+                </a>
                 <div class="clear"></div>
                 <div class="logout">
                     <p class="sairSistema">

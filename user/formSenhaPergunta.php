@@ -5,18 +5,23 @@
         <meta name="author" content="Allan Carlos">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../assets/css/style.css">
         <title>Sistema de Login e Senha Criptografados</title>
         <?php
             include '../conexao.php';
+
+            $msgErro = '<p>Desculpe, mas você não está cadastrado no nosso sistema!</p>
+                <p><a href="../index.php">Clique aqui</a> para voltar à tela anterior e informe um e-mail válido.</p>
+                <p>Obrigado.</p>';
 
             $recebeEmail = $_POST['email'];
             $filtraEmail = filter_var($recebeEmail, FILTER_SANITIZE_SPECIAL_CHARS);
             $filtraEmail = filter_var($filtraEmail, FILTER_SANITIZE_ADD_SLASHES);
 
-            $sql = mysqli_query($conecta, "SELECT opc_pergunta_secreta FROM tblusuario WHERE email_tblusuario = '$filtraEmail'") or die(mysqli_error($conecta));
+            $sql = mysqli_query($conecta, "SELECT opc_pergunta_secreta, email_tblusuario FROM tblusuario WHERE email_tblusuario = '$filtraEmail'") or die(mysqli_error($conecta));
             $result = mysqli_fetch_assoc($sql);
             print_r($result);
+            if(mysqli_num_rows($sql) < 1) exit($msgErro)
         ?>
     </head>
     <body>
@@ -24,7 +29,7 @@
                 <h1>Sistema de Login e Senha Criptografados - Recuperação de Senha</h1>
                 <div class="borda"></div>
             <?php
-                if($result['opc_pergunta_secreta'] != ""){ 
+                if($result['opc_pergunta_secreta'] != ""){
             ?>
                 <p>Informe a pergunta secreta, para que uma nova senha seja enviada!</p>
                 <form action="enviaSenha.php" method="post">
@@ -48,7 +53,7 @@
         ?>
                 <p>Desculpe, mas você não tem uma pergunta secreta informada!</p>
                 <p>Entre em contato com o administrador do sistema.</p>
-                <p><a href="../index.php">Clique aqui</a> para voltar à página inicial.</p>
+                <p><a href="formSenha.php">Clique aqui</a> para voltar à página anterior.</p>
                 <p>Obrigado.</p>
         <?php } ?>
         </div>
