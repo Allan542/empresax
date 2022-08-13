@@ -25,6 +25,7 @@ p {
     color: #3e29ff;
 }
 
+/* Conteúdo */
 #conteudo {
     width: 984px;
     height: auto;
@@ -34,7 +35,7 @@ p {
 }
 
 #conteudo form {
-    font-size: 80%;;
+    font-size: 80%;
 }
 
 #conteudo form legend {
@@ -88,7 +89,7 @@ p {
 
 #conteudo form input[type=number] {
     -moz-appearance: textfield;
-  }
+}
 
 #conteudo form .botaoForm {
     background-color: #E0E6F3;
@@ -191,6 +192,31 @@ p {
     text-align: center;
 }
 
+.icone-foto-perfil {
+    float: right;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border: 1px solid black;
+}
+
+.box-icone-foto {
+    font-size: 90%;
+}
+
+.box-icone-foto a:visited {
+    color: #0653ec;
+}
+
+.box-icone-foto a:hover {
+    color: #0400f0;
+}
+
+.texto-icone-foto {
+    clear: both;
+    float: right;
+}
+
 .admin {
     text-decoration: underline;
     color: #900;
@@ -273,90 +299,7 @@ img {
     left: 38%;
 }
 
-#conteudo #perfil {
-    /* height: 500px; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-items: flex-start;
-    justify-content: flex-start;
-}
-
-#perfil .perfil-foto {
-    cursor: initial;
-    margin: 0;
-    border: 3px solid black;
-    padding: 3px;
-    border-radius: 100%;
-}
-
-#perfil .perfil-nome {
-    font-size: 180%;
-    margin-top: 10px;
-    color: #0400f0;
-
-}
-
-#perfil .perfil-email{
-    margin-top: 10px;
-    font-size: 130%;
-    color:#109ef1
-}
-
-#perfil .perfil-pergunta-secreta {
-    margin-top: 30px;
-    color: #0653ec;
-}
-
-#perfil .perfil-pergunta-secreta div:last-child {
-    color: #3e29ff;
-    font-size: 90%;
-}
-
-.botao-perfil {
-    float: left;
-}
-
-.form-perfil {
-    display: none;
-}
-
-.centralizar {
-    display: flex;
-    justify-content: center;
-}
-
-.box-troca-img {
-    display: none;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    z-index: 5;
-    background-color: #00000098;
-    left: 0;
-    top: 0;
-}
-
-.form-troca-img {
-    display: flex;
-    height: 60px;
-    flex-direction: column;
-    justify-content: space-between;
-    position: fixed;
-    left: 40%;
-    top: 65%;
-}
-
-.form-troca-img input[type=file]{
-    font-size: 130%;
-    font-weight: 800;
-}
-
-.botao-troca-img {
-    clear: both;
-    float: left;
-}
-
 .mostrar {
-    display: initial;
+    display: initial !important;
+    visibility: visible !important;
 }
