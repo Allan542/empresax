@@ -31,12 +31,15 @@
                 <div class="clear"></div>
                 <div class="espaco"></div>
                 
-                <div class="box-icone-foto">
-                    <a href="../user/formPerfil.php"><img 
-                        src="../../assets/images/profile/<?php echo $img; ?>"
-                        alt="Foto de perfil"
-                        class="icone-foto-perfil"
-                    ><span class="texto-icone-foto">Acessar perfil</span></a>
+                <div class="box-icone-foto" title="Acessar perfil">
+                    <a href="../profile/formPerfil.php">
+                        <img 
+                            src="../../assets/images/profile/<?php echo $img; ?>"
+                            alt="Foto de perfil"
+                            class="icone-foto-perfil"
+                        >
+                        <span class="texto-icone-foto">Acessar perfil</span>
+                    </a>
                 </div>
 
                 <?php if ($_SESSION['tipo_usuario'] == "Administrador" || $_SESSION['tipo_usuario'] == "Master") { ?>
@@ -49,9 +52,6 @@
 
                 <div class="clear"></div>
                 <div class="espaco"></div>
-                <!-- <a href="../user/formPerfil.php">
-                    <button class="botao">Acessar perfil</button>
-                </a> -->
 
                 <div class="clear"></div>
                 <div class="logout">

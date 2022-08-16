@@ -72,12 +72,15 @@
 
                 <div class="borda"></div>
                 <div class="espaco"></div>
-                <div class="box-icone-foto">
-                    <a href="../user/formPerfil.php"><img 
-                        src="../../assets/images/profile/<?php echo $img; ?>"
-                        alt="Foto de perfil"
-                        class="icone-foto-perfil"
-                    ><span class="texto-icone-foto">Acessar perfil</span></a>
+                <div class="box-icone-foto" title="Acessar perfil">
+                    <a href="../profile/formPerfil.php">
+                        <img 
+                            src="../../assets/images/profile/<?php echo $img; ?>"
+                            alt="Foto de perfil"
+                            class="icone-foto-perfil"
+                        >
+                        <span class="texto-icone-foto">Acessar perfil</span>
+                    </a>
                 </div>
 
                 <div class="clear"></div>

@@ -22,5 +22,69 @@ Projeto desenvolvido para aprender um pouco sobre o funcionamento da linguagem P
 
 - [X] Um perfil que contará com as informações do usuário e mostrará as informações que o usuário cadastrou. Nessa mesma tela, o usuário terá como atualizar os seus dados cadastrais, exceto e-mail por razões de segurança.
 
+## Screenshots do projeto
+
+  ### Tela Principal
+  ![Tela Principal](./assets/images/screenshots/principal.png "Tela Principal")
+
+  ### Tela de Cadastro
+  ![Tela de Cadastro](./assets/images/screenshots/cadastro.png "Tela de Cadastro")
+
+  ### Tela de Esqueceu a Senha (Email)
+  ![Tela de Esqueceu a Senha (Email)](./assets/images/screenshots/esqueceu-senha-email.png "Tela de Esqueceu a Senha (Email)")
+
+  ### Tela de Esqueceu a Senha (Pergunta Secreta)
+  ![Tela de Esqueceu a Senha (Pergunta Secreta)](./assets/images/screenshots/esqueceu-senha-pergunta.png "Tela de Esqueceu a Senha (Pergunta Secreta)")
+
+  ### Tela de Conteúdo Exclusivo
+  ![Tela de Conteúdo Exclusivo](./assets/images/screenshots/conteudo-exclusivo.png "Tela de Conteúdo Exclusivo")
+
+  ### Tela do Gráfico e Fotos das Bandas
+  ![Gráfico das Bandas](./assets/images/screenshots/bandas-grafico.png "Gráfico das Bandas")
+  
+  ![Foto das Bandas](./assets/images/screenshots/bandas-fotos-2.png "Foto das Bandas")
+  ![Foto das Bandas](./assets/images/screenshots/bandas-fotos-3.png "Foto das Bandas")
+  ![Foto das Bandas](./assets/images/screenshots/bandas-fotos-4.png "Foto das Bandas")
+  ![Foto das Bandas](./assets/images/screenshots/bandas-fotos-5.png "Foto das Bandas")
+
+  #### Foto de uma Banda Expandida
+
+  ![Foto expandida de uma banda](./assets/images/screenshots/bandas-foto-expandida.png "Foto expandida de uma banda")
+
+  #### Relatório das Bandas em PDF
+
+  ![Relatório das Bandas em PDF](./assets/images/screenshots/bandas-relatorio.png "Relatório das Bandas em PDF")
+
+
+
+  ### Tela de Usuários Cadastrados
+  ![Tela de Usuários Cadastrados](./assets/images/screenshots/usuarios-cadastrados.png "Tela de Usuários Cadastrados")
+
+  #### Gráfico de Usuários Cadastrados
+  ![Gráfico de Usuários Cadastrados](./assets/images/screenshots/usuarios-cadastrados-grafico.png "Gráfico de Usuários Cadastrados")
+
+  #### Relatório de Usuários Cadastrados
+  ![Relatório de Usuários Cadastrados](./assets/images/screenshots/usuarios-cadastrados-relatorio.png "Relatório de Usuários Cadastrados")
+
+  ### Tela de Perfil
+  ![Tela de Perfil](./assets/images/screenshots/perfil.png "Tela de Perfil")
+
+  #### Atualizar Informações/Senha
+
+  ![Tela de Perfil: Atualizar Informações/Senha](./assets/images/screenshots/perfil-2.png "Tela de Perfil: Atualizar Informações/Senha")
+
+  #### Foto de Perfil expandida
+
+  ![Foto de Perfil expandida](./assets/images/screenshots/perfil-foto-expandida.png "Foto de Perfil expandida")
+
+  #### Mudar Foto de Perfil
+
+  ![Mudar Foto de Perfil](./assets/images/screenshots/perfil-mudar-imagem.png "Mudar Foto de Perfil")
+
+  #### Excluir Foto de Perfil
+
+  ![Excluir Foto de Perfil](./assets/images/screenshots/perfil-excluir.png "Excluir Foto de Perfil")
+
+  ![Excluir Foto de Perfil](./assets/images/screenshots/perfil-excluir-2.png "Excluir Foto de Perfil")
 
 É isso😃

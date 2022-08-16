@@ -2,7 +2,7 @@ function mostraAtualizarDados(form) {
     document.querySelector(form).classList.toggle('mostrar')
 }
 
-function mostraMudarImagem() {
+function mostraMudarFotoPerfil() {
     document.querySelector('.box-troca-img').classList.toggle('mostrar')
 }
 
@@ -15,7 +15,7 @@ function mostraPerguntaSecreta(perguntasecreta) {
         CheckPergunta.checked = true
     }
 
-    if(CheckPergunta.checked) {
+    if(CheckPergunta.checked) { // quando checkbox da pergunta secreta no perfil marcado, mostra e ativa os campos
         BoxPerguntaSecreta.classList.add('mostrar')
         document.querySelector('select.select-box').disabled = false
         document.querySelector('input.txtResposta').disabled = false
@@ -28,7 +28,7 @@ function mostraPerguntaSecreta(perguntasecreta) {
 
 function perguntaExcluirFoto() {
     let pergunta = confirm('Deseja mesmo excluir a sua foto de perfil?')
-    if(pergunta) document.querySelector("a.link-exclui-foto").href = 'excluirImagem.php?'
+    if(pergunta) document.querySelector("a.link-exclui-foto").href = 'excluirImagem.php'
 }
 
 window.onload = () => {

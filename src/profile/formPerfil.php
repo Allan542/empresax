@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="../../assets/css/style-perfil.css">
     <script src="../../assets/js/perfil.js"></script>
-    <script src="../../assets/js/manipulaFoto.js"></script>
+    <script src="../../assets/js/expandeFoto.js"></script>
     <title>Perfil de Usuário</title>
 </head>
 <body>
@@ -42,7 +42,7 @@
                 <div class="box-exclui-img">
                     <button class="botao botao-exclui-img" onclick="perguntaExcluirFoto()"><a class="link-exclui-foto"><div>Excluir foto atual</div></a></button>
                 </div>
-                <button class="botao botao-esconder" onclick="mostraMudarImagem()">Cancelar</button>
+                <button class="botao botao-esconder" onclick="mostraMudarFotoPerfil()">Cancelar</button>
             </div>
 
             <h1>Perfil de Usuário</h1>
@@ -66,7 +66,7 @@
                     src="../../assets/images/profile/<?php echo $img; ?>"
                     alt="Foto de perfil"
                     class="perfil-foto"
-                    onclick="expandeFoto('../../assets/images/profile/<?php echo $img; ?>')"
+                    onclick="expandeFoto('../../assets/images/profile/<?php echo $img; ?>', 'perfil')"
                 >
                 <div class='perfil-nome'><?php echo $result['nome_tblusuario'] . ', ' . $result['idade_tblusuario'] . ' anos'; ?></div>
                 <div class='perfil-email'><?php echo $result['email_tblusuario']; ?></div>
@@ -84,7 +84,7 @@
 
             <div class="espaco"></div>
             <div class="centralizar">
-                <button class="botao" onclick="mostraMudarImagem()">Mudar Imagem</button>
+                <button class="botao" onclick="mostraMudarFotoPerfil()">Mudar foto</button>
             </div>
             <div class="clear"></div>
 

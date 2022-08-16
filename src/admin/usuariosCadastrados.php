@@ -14,7 +14,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../../assets/css/style.css">
-        <title>Listagem de conteúdo</title>
+        <title>Tabela de Usuários Cadastrados</title>
     </head>
     <body>
         <div id="conteudo">
@@ -29,12 +29,15 @@
                 <div class="borda"></div>
                 <div class="espaco"></div>
 
-                <div class="box-icone-foto">
-                    <a href="../user/formPerfil.php"><img 
-                        src="../../assets/images/profile/<?php echo $img; ?>"
-                        alt="Foto de perfil"
-                        class="icone-foto-perfil"
-                    ><span class="texto-icone-foto">Acessar perfil</span></a>
+                <div class="box-icone-foto" title="Acessar perfil">
+                    <a href="../profile/formPerfil.php">
+                        <img 
+                            src="../../assets/images/profile/<?php echo $img; ?>"
+                            alt="Foto de perfil"
+                            class="icone-foto-perfil"
+                        >
+                        <span class="texto-icone-foto">Acessar perfil</span>
+                    </a>
                 </div>
 
                 <div class="clear"></div>

@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="conteudo">
-        <h1>Sistema de login e senha criptografados - Cadastro de usuário</h1>
+        <h1>Sistema de Login e Senha Criptografados - Cadastro de Usuário</h1>
         <div class="borda"></div>
         <p>Para ter acesso ao conteúdo exclusivo, por favor, cadastre-se utilizando o formulário abaixo!</p>
         <form action="cadastro.php" method="post" id="validaAcesso">

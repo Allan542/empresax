@@ -14,7 +14,7 @@
 </head>
 <body>
     <div id="conteudo">
-        <h1>Sistema de login e senha criptografados</h1>
+        <h1>Sistema de Login e Senha Criptografados</h1>
         <div class="borda"></div>
         <?php
             $refresh = '<meta http-equiv="refresh" content="5; url=../index.php">'; // meta tag para voltar à página inicial

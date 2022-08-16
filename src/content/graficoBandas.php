@@ -11,7 +11,7 @@
         <script src="../../assets/js-library/RGraph.common.dynamic.js"></script>
         <script src="../../assets/js-library/RGraph.bar.js"></script> <!-- bibliotecas que renderizarão o gráfico -->
         <script src="../../assets/js/graficos.js"></script> <!-- importando o gráfico aqui -->
-        <script src="../../assets/js/manipulaFoto.js"></script> <!-- Arquivo que contém a função para expandir fotos -->
+        <script src="../../assets/js/expandeFoto.js"></script> <!-- Arquivo que contém a função para expandir fotos -->
         <title>Gráfico de Bandas Cadastradas</title>
         <?php
             include "../conexao.php";
@@ -80,12 +80,15 @@
                 <div class="borda"></div>
                 <div class="espaco"></div>
 
-                <div class="box-icone-foto">
-                    <a href="../user/formPerfil.php"><img 
-                        src="../../assets/images/profile/<?php echo $img; ?>"
-                        alt="Foto de perfil"
-                        class="icone-foto-perfil"
-                    ><span class="texto-icone-foto">Acessar perfil</span></a>
+                <div class="box-icone-foto" title="Acessar perfil">
+                    <a href="../profile/formPerfil.php">
+                        <img 
+                            src="../../assets/images/profile/<?php echo $img; ?>"
+                            alt="Foto de perfil"
+                            class="icone-foto-perfil"
+                        >
+                        <span class="texto-icone-foto">Acessar perfil</span>
+                    </a>
                 </div>
 
                 <div class="clear"></div>
@@ -112,6 +115,7 @@
                     $sqlbandas=mysqli_query($conecta, "SELECT * FROM tbl_bandas");
                     while ($resulta=mysqli_fetch_assoc($sqlbandas)){
                 ?>
+                        <div class="borda"></div>
                         <h1><?php echo $resulta['nome_tbl_bandas']; ?></h1>
                         <div class="borda"></div>
                         <?php
@@ -124,7 +128,7 @@
                                         src="../../assets/<?php echo $resultdiscos['capa_tbl_discos']; ?>"
                                         alt="Capa do álbum"
                                         title="<?php echo $resultdiscos['titulo_tbl_discos']; ?>"
-                                        onclick="expandeFoto('../../assets/<?php echo $resultdiscos['capa_tbl_discos']; ?>')"
+                                        onclick="expandeFoto('../../assets/<?php echo $resultdiscos['capa_tbl_discos']; ?>', 'bandas', '<?php echo $resultdiscos['titulo_tbl_discos']; ?>')"
                                     >
                                 </div>
                         <?php } ?>

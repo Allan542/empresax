@@ -12,11 +12,11 @@
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="../assets/css/style.css">
-            <title>Sistema de login e senha criptografados - Acesso ao Conteúdo Exclusivo</title>
+            <title>Sistema de Login e Senha criptografados - Acesso ao Conteúdo Exclusivo</title>
         </head>
         <body>
             <div id="conteudo">
-                <h1>Sistema de login e senha criptografados - Acesso ao Conteúdo Exclusivo</h1>
+                <h1>Sistema de Login e Senha criptografados - Acesso ao Conteúdo Exclusivo</h1>
                 <div class="borda"></div>
                 <p>Para ter acesso ao <strong>Conteúdo Exclusivo</strong>, por favor, logue-se utilizando o formulário abaixo!</p>
                 <p>Ainda não é cadastrado em nosso sistema, <a href="./user/formCadastro.php">Cadastre-se</a>!</p>

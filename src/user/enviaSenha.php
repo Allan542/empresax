@@ -25,7 +25,7 @@
 <body>
     <div id="conteudo">
         <?php if (strtolower($result['resp_pergunta_secreta']) != $filtraResposta) { ?>
-            <h1>Pergunta secreta!</h1>
+            <h1>Sistema de Login e Senha Criptografados - Recuperação de Senha</h1>
             <div class="borda"></div>
             <p>Desculpe, mas a pergunta secreta está incorreta!</p>
             <p>Se quiser tentar novamente, <a href="formSenha.php">clique aqui</a>.</p>
@@ -77,7 +77,7 @@
             $msg .= "Obrigado.<br>";
             mail($email,"Nova Senha", $msg, "From: Sistema <allan@allan.com>" . $formato);
         ?>
-        <h1>Senha enviada!</h1>
+        <h1>Sistema de Login e Senha Criptografados - Recuperação de Senha</h1>
         <div class="borda"></div>
         <p>Parabéns. Sua senha foi enviada para o e-mail solicitado.</p>
         <p>Após verificar seu e-mail, retorne à página de login.</p>
