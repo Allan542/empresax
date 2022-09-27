@@ -1,8 +1,8 @@
 <?php
     session_cache_expire(5);
     session_start();
+    
     include "../conexao.php";
-
     $sql = mysqli_query($conecta, "SELECT foto_perfil_tblusuario FROM tblusuario WHERE id_tblusuario=" . $_SESSION['id_usuario']) or die(mysqli_error($conecta));
     $result = mysqli_fetch_assoc($sql);
     $img = $result['foto_perfil_tblusuario'] == ""? "default/default.png" : $result['foto_perfil_tblusuario'];

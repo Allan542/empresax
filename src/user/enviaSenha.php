@@ -1,36 +1,47 @@
 <?php
+    session_start();
     include "../conexao.php";
-    $recebeEmail = $_POST['email'];
-    $filtraEmail = filter_var($recebeEmail, FILTER_SANITIZE_SPECIAL_CHARS);
-    $filtraEmail = filter_var($filtraEmail, FILTER_SANITIZE_ADD_SLASHES);
 
-    $recebeResposta = trim($_POST['resposta']);
-    $filtraResposta = filter_var($recebeResposta, FILTER_SANITIZE_SPECIAL_CHARS);
-    $filtraResposta = filter_var($filtraResposta, FILTER_SANITIZE_ADD_SLASHES);
-    $filtraResposta = strtolower($filtraResposta);
+    if(!empty($_POST)){
+        $_SESSION['prox_pagina'] = "./user/enviaSenha.php";
+        $_SESSION['post'] = $_POST;
+        exit(header("Location: ../recarregar.php"));
+    }
+    if(isset($_SESSION['post'])){
 
-    $sql_pesq = mysqli_query($conecta, "SELECT * FROM tblusuario WHERE email_tblusuario = '$filtraEmail'") or die (mysqli_error($conecta));
-    $result = mysqli_fetch_assoc($sql_pesq);
+        $recebeEmail = $_SESSION['post']['email'];
+        $filtraEmail = filter_var($recebeEmail, FILTER_SANITIZE_SPECIAL_CHARS);
+        $filtraEmail = filter_var($filtraEmail, FILTER_SANITIZE_ADD_SLASHES);
+    
+        $recebeResposta = trim($_SESSION['post']['resposta']);
+        $filtraResposta = filter_var($recebeResposta, FILTER_SANITIZE_SPECIAL_CHARS);
+        $filtraResposta = filter_var($filtraResposta, FILTER_SANITIZE_ADD_SLASHES);
+        $filtraResposta = strtolower($filtraResposta);
+
+        unset($_SESSION['post']);
+    
+        $sql_pesq = mysqli_query($conecta, "SELECT * FROM tblusuario WHERE email_tblusuario = '$filtraEmail'") or die (mysqli_error($conecta));
+        $result = mysqli_fetch_assoc($sql_pesq);
 ?>
-<!DOCTYPE html>
-<html lang="pt_BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="author" content="Allan Carlos">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <title>Sistema de Login e Senha Criptografados</title>
-</head>
-<body>
-    <div id="conteudo">
+        <!DOCTYPE html>
+        <html lang="pt_BR">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="author" content="Allan Carlos">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="../../assets/css/style.css">
+            <title>Sistema de Login e Senha Criptografados</title>
+        </head>
+        <body>
+            <div id="conteudo">
         <?php if (strtolower($result['resp_pergunta_secreta']) != $filtraResposta) { ?>
-            <h1>Sistema de Login e Senha Criptografados - Recuperação de Senha</h1>
-            <div class="borda"></div>
-            <p>Desculpe, mas a pergunta secreta está incorreta!</p>
-            <p>Se quiser tentar novamente, <a href="formSenha.php">clique aqui</a>.</p>
-            <p>Obrigado.</p>
-        <?php } 
+                <h1>Sistema de Login e Senha Criptografados - Recuperação de Senha</h1>
+                <div class="borda"></div>
+                <p>Desculpe, mas a pergunta secreta está incorreta!</p>
+                <p>Se quiser tentar novamente, <a href="formSenha.php">clique aqui</a>.</p>
+                <p>Obrigado.</p>
+    <?php } 
         else {
             $id_usuario = $result['id_tblusuario'];
             $nome = $result['nome_tblusuario'];
@@ -83,7 +94,16 @@
         <p>Após verificar seu e-mail, retorne à página de login.</p>
         <p>Se preferir, <a href="../index.php">clique aqui</a>.</p>
         <p>Obrigado!</p>
-        <?php } ?>
+    <?php 
+        }        
+    } else {
+        $refresh = "<meta http-equiv='refresh' content='0; url=../index.php'>";
+        echo "<script>";
+        echo "alert('Não é possível recarregar esta página. Portanto, faça da maneira correta, enviando novamente os dados nos respectivos campos.')";
+        echo "</script>";
+        exit($refresh);
+    }
+    ?>
     </div>
 </body>
 </html>

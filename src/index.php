@@ -20,7 +20,7 @@
                 <div class="borda"></div>
                 <p>Para ter acesso ao <strong>Conteúdo Exclusivo</strong>, por favor, logue-se utilizando o formulário abaixo!</p>
                 <p>Ainda não é cadastrado em nosso sistema, <a href="./user/formCadastro.php">Cadastre-se</a>!</p>
-                <form action="./user/validaAcesso.php" method="post" id="validaAcesso">
+                <form action="./user/validaAcesso.php" method="post" id="validaAcesso" enctype="application/x-www-form-urlencoded">
                     <fieldset>
                         <legend>Login</legend>
                         <label for="email">Email:</label>

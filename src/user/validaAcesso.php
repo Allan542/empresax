@@ -1,6 +1,12 @@
 <?php
     session_start();
     include '../conexao.php';
+
+    if(!empty($_POST)){
+        $_SESSION['prox_pagina'] = "./user/validaAcesso.php";
+        $_SESSION['post'] = $_POST;
+        exit(header("Location: ../recarregar.php"));
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt_BR">
@@ -14,16 +20,19 @@
 </head>
 <body>
     <div id="conteudo">
-        <h1>Sistema de login e senha criptografados - Verificando Informações</h1>
-        <div class="borda"></div>
         <?php
-            $recebeEmail = trim($_POST['email']);
+        if(isset($_SESSION['post'])){
+            echo "<h1>Sistema de login e senha criptografados - Verificando Informações</h1>";
+            echo "<div class='borda'></div>";
+            $recebeEmail = trim($_SESSION['post']['email']);
             $filtraEmail = filter_var($recebeEmail, FILTER_SANITIZE_SPECIAL_CHARS); // retira os caracteres especiais html
             $filtraEmail = filter_var($filtraEmail, FILTER_SANITIZE_ADD_SLASHES); // adiciona \ em caracteres como: ', ", NULL e a própria \
             
-            $recebeSenha = $_POST['senha'];
+            $recebeSenha = $_SESSION['post']['senha'];
             $filtraSenha = filter_var($recebeSenha, FILTER_SANITIZE_SPECIAL_CHARS);
             $filtraSenha = filter_var($filtraSenha, FILTER_SANITIZE_ADD_SLASHES);
+
+            unset($_SESSION['post']);
 
             // Função para criptografar a senha
             function criptoSenha($criptoSenha) {
@@ -38,10 +47,21 @@
                 $_SESSION['id_usuario']=$result['id_tblusuario'];
                 $_SESSION['nome_usuario']=$result['nome_tblusuario'];
                 $_SESSION['tipo_usuario']=$result['tipo_tblusuario'];
+
                 header("Location: ../content/conteudoExclusivo.php");
+                return false;
             } else {
-                echo "<p>Nome de Usuário ou Senha informada não confere. Por favor, <a href='javascript:history.back();'>volte</a> e tente novamente!</p>";
+                echo "<p>Nome de Usuário ou Senha informada não confere.</p>";
+                echo "<p>Por favor, <a href='javascript:history.back()'>clique aqui</a> para voltar e tente novamente.</p>";
+                return false;
             }
+        }  else {
+            $refresh = "<meta http-equiv='refresh' content='0; url=../index.php'>";
+            echo "<script>";
+            echo "alert('Não é possível recarregar esta página. Portanto, faça da maneira correta, enviando novamente os dados nos respectivos campos.')";
+            echo "</script>";
+            exit($refresh);
+        }
         ?>
     </div>
 </body>

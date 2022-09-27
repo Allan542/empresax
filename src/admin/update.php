@@ -17,35 +17,42 @@
             session_cache_expire(5);
             session_start();
 
+            if(!empty($_POST)){
+                $_SESSION['prox_pagina'] = "./admin/update.php";
+                $_SESSION['post'] = $_POST;
+                exit(header("Location: ../recarregar.php"));
+            }
+
+
             function criptoSenha($criptoSenha){
                 return md5($criptoSenha);
             }
 
             if(!isset($_SESSION['login'])) $_SESSION['login'] = false;
-            if($_SESSION['login']){
+            if($_SESSION['login'] && isset($_SESSION['post'])){
                 $refresh = "<meta http-equiv='refresh' content='5; url=usuariosCadastrados.php'>";
 
-                $recebeId = $_POST['id'];
+                $recebeId = $_SESSION['post']['id'];
                 $filtraId = filter_var($recebeId, FILTER_SANITIZE_SPECIAL_CHARS);
                 $filtraId = filter_var($filtraId, FILTER_SANITIZE_ADD_SLASHES);
 
-                $recebeNome = trim(ucwords($_POST['nome']));
+                $recebeNome = trim(ucwords($_SESSION['post']['nome']));
                 $filtraNome = filter_var($recebeNome, FILTER_SANITIZE_SPECIAL_CHARS);
                 $filtraNome = filter_var($filtraNome, FILTER_SANITIZE_ADD_SLASHES);
 
-                $recebeEmail = trim($_POST['email']);
+                $recebeEmail = trim($_SESSION['post']['email']);
                 $filtraEmail = filter_var($recebeEmail, FILTER_SANITIZE_SPECIAL_CHARS);
                 $filtraEmail = filter_var($filtraEmail, FILTER_SANITIZE_ADD_SLASHES);
                 
-                $recebeIdade = $_POST['idade'];
+                $recebeIdade = $_SESSION['post']['idade'];
                 $filtraIdade = filter_var($recebeIdade, FILTER_SANITIZE_SPECIAL_CHARS);
                 $filtraIdade = filter_var($filtraIdade, FILTER_SANITIZE_ADD_SLASHES);
 
-                $newSenha = $_POST['new_pass'];
+                $newSenha = $_SESSION['post']['new_pass'];
                 $filtra_newSenha = filter_var($newSenha, FILTER_SANITIZE_SPECIAL_CHARS);
                 $filtra_newSenha = filter_var($filtra_newSenha, FILTER_SANITIZE_ADD_SLASHES);
 
-                $conf_newSenha = $_POST['conf_new_pass'];
+                $conf_newSenha = $_SESSION['post']['conf_new_pass'];
                 $filtra_conf_newSenha = filter_var($conf_newSenha, FILTER_SANITIZE_SPECIAL_CHARS);
                 $filtra_conf_newSenha = filter_var($filtra_conf_newSenha, FILTER_SANITIZE_ADD_SLASHES);
 
@@ -55,8 +62,9 @@
                 $sql=mysqli_query($conecta, "SELECT * FROM tblusuario WHERE id_tblusuario = $filtraId") or die(mysqli_error($conecta));
                 $result=mysqli_fetch_assoc($sql);
 
-                $recebe_chkAdmin = isset($_POST['chk_admin']) ? $_POST['chk_admin'] : 
+                $recebe_chkAdmin = isset($_SESSION['post']['chk_admin']) ? $_SESSION['post']['chk_admin'] : 
                     ($_SESSION['tipo_usuario'] == "Master" && $_SESSION['id_usuario'] == $result['id_tblusuario'] ? "Master" : "Usuário");
+                unset($_SESSION['post']);
         ?>
                 <h1>Atualização de dados</h1>
                 <div class="borda"></div>
@@ -79,6 +87,12 @@
                     echo "<p>Dados atualizados com sucesso!";
                     exit($refresh);
                 }
+            } else if(!isset($_SESSION['post'])){
+                $refresh = "<meta http-equiv='refresh' content='0; url=../index.php'>";
+                echo "<script>";
+                echo "alert('Não é possível recarregar esta página. Portanto, faça da maneira correta, enviando novamente os dados nos respectivos campos.')";
+                echo "</script>";
+                exit($refresh);
             }
             else {
         ?>

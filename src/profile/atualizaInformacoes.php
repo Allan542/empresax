@@ -2,6 +2,14 @@
     include "../conexao.php";
     session_cache_expire(5);
     session_start();
+
+    if(!empty($_POST)){
+        $_SESSION['prox_pagina'] = "./profile/atualizaInformacoes.php";
+        $_SESSION['post'] = $_POST;
+        exit(header("Location: ../recarregar.php"));
+    }
+
+    $refresh = "<meta http-equiv='refresh' content='2; url=formPerfil.php'>";
 ?>
 
 <!DOCTYPE html>
@@ -16,43 +24,45 @@
 </head>
 <body>
     <div id="conteudo">
-        <h1>Atualizar Informações</h1>
-        <div class="borda"></div>
     <?php
         if(!isset($_SESSION['login'])) $_SESSION['login'] = false;
-        if ($_SESSION['login']){
+        if ($_SESSION['login'] && isset($_SESSION['post'])){
+            echo "<h1>Atualizar Informações</h1>";
+            echo "<div class='borda'></div>";
+
             function criptoSenha($criptoSenha){
                 return md5($criptoSenha);
             }
-            
-            $refresh = "<meta http-equiv='refresh' content='5; url=formPerfil.php'>";
 
             $idUserLogado = $_SESSION['id_usuario'];
 
-            $recebeNome = trim(ucwords($_POST['nome']));
+            $recebeNome = trim(ucwords($_SESSION['post']['nome']));
             $filtraNome = filter_var($recebeNome, FILTER_SANITIZE_SPECIAL_CHARS);
             $filtraNome = filter_var($filtraNome, FILTER_SANITIZE_ADD_SLASHES);
             
-            $recebeIdade = $_POST['idade'];
+            $recebeIdade = $_SESSION['post']['idade'];
             $filtraIdade = filter_var($recebeIdade, FILTER_SANITIZE_SPECIAL_CHARS);
             $filtraIdade = filter_var($filtraIdade, FILTER_SANITIZE_ADD_SLASHES);
 
-            $confereSenha = $_POST['conf_pass'];
+            $confereSenha = $_SESSION['post']['conf_pass'];
             $filtra_confereSenha = filter_var($confereSenha, FILTER_SANITIZE_SPECIAL_CHARS);
             $filtra_confereSenha = filter_var($filtra_confereSenha, FILTER_SANITIZE_ADD_SLASHES);
 
             $cripto_confereSenha = criptoSenha($filtra_confereSenha);
 
-            $confere_chkAttPergunta = isset($_POST['chk-att-pergunta']);
+            $confere_chkAttPergunta = isset($_SESSION['post']['chk-att-pergunta']);
 
             if ($confere_chkAttPergunta){
-                $recebePergunta = $_POST['pergunta'];
+                $recebePergunta = $_SESSION['post']['pergunta'];
 
-                $recebeResposta = trim($_POST['resposta']);
+                $recebeResposta = trim($_SESSION['post']['resposta']);
                 $filtraResposta = filter_var($recebeResposta, FILTER_SANITIZE_SPECIAL_CHARS);
                 $filtraResposta = filter_var($filtraResposta, FILTER_SANITIZE_ADD_SLASHES);
             
             }
+            unset($_SESSION['post']);
+
+            
 
             $sql = mysqli_query($conecta, "SELECT senha_tblusuario FROM tblusuario WHERE id_tblusuario=$idUserLogado") or die(mysqli_error($conecta));
             $result = mysqli_fetch_assoc($sql);
@@ -60,7 +70,7 @@
             if($result['senha_tblusuario'] == $cripto_confereSenha) {
                 if (isset($recebePergunta) && $recebePergunta == ""){
                     echo '<p>A pergunta secreta precisa ser selecionada.</p>';
-                    echo '<p><a href="javascript:history.back()">Clique aqui</a> para voltar e tente novamente!</p>';
+                    exit($refresh);
                 } 
                 else {
                     $sqlUpdate = $confere_chkAttPergunta ?
@@ -77,11 +87,16 @@
                 }
             } else {
                 echo '<p>A senha foi digitada incorretamente.</p>';
-                echo '<p><a href="javascript:history.back()">Clique aqui</a> para voltar e tente novamente!</p>';
+                exit($refresh);
             }
 
-        }
-        else {
+        } else if(!isset($_SESSION['post'])){
+            $refresh = "<meta http-equiv='refresh' content='0; url=formPerfil.php'>";
+            echo "<script>";
+            echo "alert('Não é possível recarregar esta página. Portanto, faça da maneira correta, enviando novamente os dados nos respectivos campos.')";
+            echo "</script>";
+            exit($refresh);
+        } else {
     ?>
             <h1>Sistema de login e senha criptografados</h1>
             <div class="borda"></div>
